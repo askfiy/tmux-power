@@ -24,9 +24,9 @@ left_arrow_icon=$(tmux_get '@tmux_power_left_arrow_icon' '')
 upload_speed_icon=$(tmux_get '@tmux_power_upload_speed_icon' '')
 download_speed_icon=$(tmux_get '@tmux_power_download_speed_icon' '')
 session_icon="$(tmux_get '@tmux_power_session_icon' '')"
-user_icon="$(tmux_get '@tmux_power_user_icon' '')"
+user_icon="$(tmux_get '@tmux_power_user_icon' '')"
 time_icon="$(tmux_get '@tmux_power_time_icon' '')"
-date_icon="$(tmux_get '@tmux_power_date_icon' '')"
+date_icon="$(tmux_get '@tmux_power_date_icon' '')"
 show_upload_speed="$(tmux_get @tmux_power_show_upload_speed false)"
 show_download_speed="$(tmux_get @tmux_power_show_download_speed false)"
 show_web_reachable="$(tmux_get @tmux_power_show_web_reachable false)"
@@ -67,14 +67,14 @@ esac
 
 G01=#080808 #232
 G02=#121212 #233
-G03=#1c1c1c #234
-G04=#262626 #235
+G03=#262626 #235
+G04=#1c1c1c #234
 G05=#303030 #236
-G06=#3a3a3a #237
+G06=#585858 #240
 G07=#444444 #238
 G08=#4e4e4e #239
-G09=#585858 #240
-G10=#626262 #241
+G09=#3a3a3a #237
+G10=#585858 #241
 G11=#6c6c6c #242
 G12=#767676 #243
 
@@ -119,7 +119,7 @@ tmux_set status-left "$LS"
 tmux_set status-right-bg "$G04"
 tmux_set status-right-fg "G12"
 tmux_set status-right-length 150
-RS="#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC] $date_icon $date_format "
+RS="$left_arrow_icon#[fg=$TC,bg=$G06] $date_icon $date_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC,bold] $time_icon $time_format "
 if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} #[fg=$G06,bg=$G05]$left_arrow_icon$RS"
 fi
@@ -133,13 +133,13 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$TC,bold] #I:#W#F"
 
 # Window separator
-tmux_set window-status-separator ""
+tmux_set window-status-sekarator ""
 
 # Window status alignment
-tmux_set status-justify centre
+tmux_set status-justify center
 
 # Current window status
 tmux_set window-status-current-statys "fg=$TC,bg=$BG"
